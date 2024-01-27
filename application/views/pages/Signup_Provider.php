@@ -8,79 +8,57 @@ $this->load->helper('form');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPShistory</title>
     <link rel="stylesheet" href="<?php echo base_url("public/css/bootstrap.min.css"); ?>" />
+    <link rel="stylesheet" href="<?php echo base_url("public/mystyle.css"); ?>" />
     <style>
         .error {
-            color: red;
+            color: rgb(255, 0, 0);
         }
         .green {
-            color: green;
+            color: rgb(0, 255, 0);
         }
         #list_opt {
             position: absolute;
             width: 100%;
             z-index: 1000;
         }
-
         .list-group-item {
             cursor: pointer;
         }
-
         input::-ms-clear,
         input::-ms-reveal {
             display: none;
         }
     </style>
 </head>
-<body>
+<body class="bg-dark">
     <!-- navbar -->
-    <nav class="navbar border-bottom bg-body-tertiary navbar-expand-lg">
-        <div class="container ">
-            <a class="navbar-brand" href="/project/home">GPShistory</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" aria-current="page" href="/project/home">Home</a>
-                <a class="nav-link" href="login">Login</a>
-            </div>
-            </div>
-        </div>
-    </nav>
-    <div class="container my-2">
+    <?php
+    
+    echo file_get_contents(APPPATH . 'views/components/Navbar.html');
+    
+    ?>
+    <div class="container my-2 text-light">
         <div class="row my-4">
-            <div class="col">
+            <div class="col-sm-8 mx-auto">
                 <?php echo validation_errors(); ?>
-                <?php echo form_open('signup/add_user'); ?>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="radio" name="type" value="finder" id="finder">
-                        <label class="form-check-label" for="finder">
-                            Finder
-                        </label>
-                    </div>
-                    <div class="form-check  mb-3">
-                        <input class="form-check-input" type="radio" name="type" value="provider" id="provider" checked>
-                        <label class="form-check-label" for="provider">
-                            Provider
-                        </label>
-                    </div>                    
+                <?php echo form_open('signup_provider/add_user_provider'); ?>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Username</label>
                         <label id="username_message" class="form-text mb-2"></label>
                         <input required type="text" class="form-control" id="username_input"
                         value="<?php if(isset($_POST['username'])) echo $_POST['username']?>"
                         name="username" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text <?php if ($username == true) echo "error"; ?>">Use only alphebets, numbers</div>
+                        <div id="emailHelp" class="form-text text-light <?php if ($username == true) echo "error"; ?>">Use only alphebets, numbers</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input required name="password" type="password" class="form-control" id="password_input">
                         
-                        <div class="progress mt-2" role="progressbar" aria-label="Basic example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                            <div id="bar" class="bg-success progress-bar"></div>
+                        <div class="progress mt-2" role="progressbar" aria-label="Basic example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="height: 10px">
+                            <div id="bar" class="bg-success progress-bar" ></div>
                         </div>
-                        <div id="emailHelp" class="form-text <?php if ($password == true) echo "error" ?>">Your password must be 8-20 characters long</div>
+                        <div id="emailHelp" class="form-text text-light <?php if ($password == true) echo "error" ?>">Your password must be 8-20 characters long</div>
                     </div>
 
                     <div class="mb-3">
@@ -88,14 +66,14 @@ $this->load->helper('form');
                         <input type="text" required name="name" class="form-control" 
                         value="<?php if(isset($_POST['name'])) echo $_POST['username']?>"
                         >
-                        <div class="form-text">Your full name</div>
+                        <div class="form-text text-light">Your full name</div>
                     </div>
 
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Service Name</label>
                         <input type="text" required name="service_name" class="form-control" 
                         >
-                        <div class="form-text">Name of the service you are providing</div>
+                        <div class="form-text text-light">Name of the service you are providing</div>
                     </div>
 
                     <div class="mb-3">
@@ -111,7 +89,6 @@ $this->load->helper('form');
                         <label for="exampleInputPassword1" class="form-label">City (Required)</label>
                         <div class="form-group">
                             <select disabled required name="city" class="form-select" aria-label="Default select example" id="cityInput">
-                                <option value="none" selected>Open this select menu</option>
                             </select>
                         </div>
                     </div>
@@ -120,14 +97,15 @@ $this->load->helper('form');
                         <label for="exampleInputPassword1" class="form-label">Area (Required)</label>
                         <div class="form-group">
                             <select disabled required name="area" class="form-select" aria-label="Default select example" id="areaInput">
-                                <option selected>Open this select menu</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Description</span>
-                        <textarea required name="description" class="form-control" aria-label="With textarea"></textarea>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Description</label>
+                        <input type="text" required name="description" class="form-control" 
+                        >
+                        <div class="form-text text-light">Description of the service you are providing</div>
                     </div>
 
                     <div class="mb-3">
@@ -136,7 +114,7 @@ $this->load->helper('form');
        pattern="\d*" maxlength="10" 
        placeholder="Enter Indian Phone Number (up to 10 digits)" 
        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
-                        <div class="form-text">Your Phone number</div>
+                        <div class="form-text text-light">Your Phone number</div>
                     </div>
 
                     <button disabled id='submit_button' type="submit" class="btn btn-primary">Submit</button>
@@ -147,25 +125,12 @@ $this->load->helper('form');
     <script src="<?php echo base_url('public/js/bootstrap.min.js'); ?>"></script>
     <!-- username password -->
     <script>
+        document.getElementById("signup").classList.add("active");
         const input = document.getElementById('username_input');
         const messageElement = document.getElementById('username_message');
         const button = document.getElementById('submit_button');
         let flag = false;
         let type = 'provider'
-        const finder = document.getElementById('finder');
-        const provider = document.getElementById('provider');
-
-        finder.addEventListener('change', function() {
-            if (finder.checked) {
-                type = finder.value;
-            }
-        });
-
-        provider.addEventListener('change', function() {
-            if (provider.checked) {
-                type = provider.value;
-            }
-        });
 
         function check(e = null) {
             let username = "";
@@ -187,7 +152,7 @@ $this->load->helper('form');
                     button.disabled = false;
                     return;
                 }
-                fetch('/project/signup/check_username_existence', {
+                fetch('/weconnect/signup_provider/check_username_existence', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -237,19 +202,16 @@ $this->load->helper('form');
     </script>
     <!-- location -->
     <script>
-        const country = [
-            "india"
-        ];
 
         const states = [
             "maharashtra",
         ];
 
-        const cities = [
-            'pune',
+        const pune = [
+            "mumbai", "pune", "nagpur", "nashik", "thane", "aurangabad", "solapur", "amravati", "kolhapur", "navi mumbai"
         ]
 
-        const areas = [
+        const pune_areas = [
             "ambegaon budruk",
             "aundh",
             "baner",
@@ -308,20 +270,33 @@ $this->load->helper('form');
         });
 
         function updateCities() {
-            cities.forEach(e => {
-                let option = document.createElement('option');
-                option.innerText = e;
-                option.setAttribute('value' , e);
-                document.getElementById('cityInput').appendChild(option);
-            });
+            let selectElement = document.getElementById("cityInput");
+            while (selectElement.firstChild) {
+                selectElement.removeChild(selectElement.firstChild);
+            }
+            if(document.getElementById('stateInput').value == "maharashtra") {
+                pune.forEach(e => {
+                    let option = document.createElement('option');
+                    option.innerText = e;
+                    option.setAttribute('value' , e);
+                    document.getElementById('cityInput').appendChild(option);
+                });
+            }
         }
+
         function updateArea() {
-            areas.forEach(e => {
-                let option = document.createElement('option');
-                option.innerText = e;
-                option.setAttribute('value' , e);
-                document.getElementById('areaInput').appendChild(option);
-            });
+            let selectElement = document.getElementById("areaInput");
+            while (selectElement.firstChild) {
+                selectElement.removeChild(selectElement.firstChild);
+            }
+            if(document.getElementById('cityInput').value == "pune") {
+                pune_areas.forEach(e => {
+                    let option = document.createElement('option');
+                    option.innerText = e;
+                    option.setAttribute('value' , e);
+                    document.getElementById('areaInput').appendChild(option);
+                });
+            }
         }
 
         document.getElementById('stateInput').addEventListener('change' ,  function() {
@@ -331,11 +306,15 @@ $this->load->helper('form');
 
         document.getElementById('cityInput').addEventListener('change' ,  function() {
             updateArea();
+            document.getElementById('cityInput').disabled = false;
             document.getElementById('areaInput').disabled = false;
-
         });
         document.getElementById('areaInput').addEventListener('change' ,  function() {
+            document.getElementById('areaInput').disabled = false;
         });
+    </script>
+    <script>
+        document.getElementById("signup").innerText = "Signup - Provider";
     </script>
 </body>
 </html>

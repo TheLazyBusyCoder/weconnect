@@ -1,0 +1,24 @@
+.act:hover {
+	color: black;
+}
+
+.some:hover {
+	color: rgb(255, 213, 0);
+}
+
+.green {
+	color: rgb(0, 255, 0);
+}
+
+.animated-text {
+	animation: faidIn 1.3s ease-in-out 0s 1;
+}
+
+@keyframes faidIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

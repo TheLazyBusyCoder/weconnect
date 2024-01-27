@@ -7,7 +7,6 @@ class Login extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('form_validation');
         $this->load->model('SignupModal');
-
         $this->load->library('session');
    	}
     public function index() {

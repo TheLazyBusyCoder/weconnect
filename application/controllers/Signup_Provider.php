@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Signup extends CI_Controller {
+class Signup_Provider extends CI_Controller {
 	public function __construct() {
       parent::__construct();
       $this->load->helper('url');
@@ -18,11 +18,10 @@ class Signup extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('pages/signup', array('username' => false , 'password' => false));
+		$this->load->view('pages/signup_provider', array('username' => false , 'password' => false));
 	}
 
-	public function add_user() {
-		$this->form_validation->set_rules('type', 'Type', 'required');
+	public function add_user_provider() {
 		$this->form_validation->set_rules('username', 'Username', 'required|alpha_numeric');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');
       	$this->form_validation->set_rules('name', 'Name', 'required');
@@ -42,10 +41,10 @@ class Signup extends CI_Controller {
 			if (form_error('password')) {
 				$password_error = true;
 			}
-			$this->load->view('pages/signup', array('username' => $username_error, 'password' => $password_error));
+			$this->load->view('pages/signup_provider', array('username' => $username_error, 'password' => $password_error));
 		} else {
 			$data = array(
-				'type' => $this->input->post('type'),
+				'type' => "provider",
 				'username' => $this->input->post('username'),
 				'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
 				'name' => $this->input->post('name'),
