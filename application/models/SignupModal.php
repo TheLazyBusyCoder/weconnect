@@ -15,6 +15,15 @@ class SignupModal extends CI_Model {
             $this->db->insert('user_provider', $data);
         }
     }
+    public function update_user($data) {
+        if ($type == 'finder') {
+            $this->db->where('username', $data['username']);
+            $this->db->update('user_finder', $data);
+        } else {
+            $this->db->where('username', $data['username']);
+            $this->db->update('user_provider', $data);
+        }
+    }
     public function is_username_exist($data) {
         $this->db->where('username', $data[0]);
         if($data[1] == 'finder') {

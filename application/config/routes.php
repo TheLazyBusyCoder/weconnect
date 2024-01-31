@@ -56,6 +56,9 @@ $route['signup_provider'] = 'signup_provider';
 $route['login'] = 'login';
 $route['account'] = 'account';
 $route['search'] = 'search';
+$route['success'] = 'success';
+$route['edit'] = 'edit';
+$route['success'] = 'pages/success';
 
 
 $route['404_override'] = '';

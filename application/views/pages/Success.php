@@ -9,13 +9,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo base_url('/public/css/bootstrap.min.css'); ?>">
     <title>Signup Successful</title>
 </head>
-<body class="bg-light">
+<body class="bg-dark">
     <div class="container mt-5">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Signup Successful</h5>
-                <p class="card-text">Please login to continue.</p>
-                <a href="/weconnect/login" class="btn btn-primary">Login</a>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Signup Successful</h5>
+                        <p class="card-text">Please login to continue.</p>
+                        <a href="/weconnect/login" class="btn btn-primary">Login</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -78,6 +78,7 @@ $this->load->helper('form');
     <!-- username password -->
     <script>
         document.getElementById("signup").classList.add("active");
+        
         const input = document.getElementById('username_input');
         const messageElement = document.getElementById('username_message');
         const button = document.getElementById('submit_button');
