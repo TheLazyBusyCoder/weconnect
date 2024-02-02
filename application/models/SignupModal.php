@@ -33,6 +33,14 @@ class SignupModal extends CI_Model {
         }
         return $query->num_rows() > 0;
     }
+
+    public function getData($data) {
+        $this->db->select('username, description, name, phonenumber, city, state, service_name');
+        $this->db->where('service_name', $data[0]);
+        $query = $this->db->get('user_provider');
+        return $query->result_array();
+    }
+
     public function get_user_provider($username) {
         $query = $this->db->get_where('user_provider', array('username' => $username));
         return $query->row_array();
