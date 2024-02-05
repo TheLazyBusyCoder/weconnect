@@ -14,6 +14,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bg-dark text-light">
 
     <?php echo file_get_contents(APPPATH . "views/components/SearchForm.html"); ?>
+
+    <?php echo file_get_contents(APPPATH . "views/components/Result.html"); ?>
     
     <script src="<?php echo base_url('public/js/bootstrap.min.js'); ?>"></script>
     <script src="<?php echo base_url('public/searchPage.js'); ?>">
