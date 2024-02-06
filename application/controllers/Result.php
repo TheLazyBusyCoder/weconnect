@@ -10,7 +10,8 @@ class Result extends CI_Controller {
    	}
     public function getdatabyservice() {
         $username = $this->input->post('servicename');
-        $data = $this->SignupModal->getData(array($username));
+        $datatemp = explode(',' , $username);
+        $data = $this->SignupModal->getData($datatemp);
         echo json_encode(array('data' => $data));
     }
 }

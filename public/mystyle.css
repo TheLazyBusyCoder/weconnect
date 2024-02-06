@@ -24,3 +24,15 @@
 }
 
 /* Search page */
+
+.resultbox::-webkit-scrollbar {
+	width: 12px; /* Width of the scrollbar */
+}
+
+.resultbox::-webkit-scrollbar-thumb {
+	background-color: transparent; /* Color of the thumb */
+}
+
+.resultbox::-webkit-scrollbar-track {
+	background-color: transparent; /* Color of the track */
+}
