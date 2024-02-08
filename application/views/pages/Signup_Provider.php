@@ -152,7 +152,7 @@ $this->load->helper('form');
                     button.disabled = false;
                     return;
                 }
-                fetch('/weconnect/signup_provider/check_username_existence', {
+                fetch('/signup_provider/check_username_existence', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'

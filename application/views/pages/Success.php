@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="card-body">
                         <h5 class="card-title">Signup Successful</h5>
                         <p class="card-text">Please login to continue.</p>
-                        <a href="/weconnect/login" class="btn btn-primary">Login</a>
+                        <a href="/login" class="btn btn-primary">Login</a>
                     </div>
                 </div>
             </div>

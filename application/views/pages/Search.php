@@ -11,7 +11,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo base_url("public/css/bootstrap.min.css"); ?>" />
     <link rel="stylesheet" href="<?php echo base_url("public/mystyle.css"); ?>" />
 </head>
-<body class="bg-dark text-light">
+<body class="bg-dark text-light" style="position:relative;">
+    <?php echo file_get_contents(APPPATH . "views/components/ViewBox.html"); ?>
 
     <?php echo file_get_contents(APPPATH . "views/components/SearchForm.html"); ?>
 
