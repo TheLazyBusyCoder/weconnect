@@ -78,6 +78,10 @@ function getData() {
 	return `${servicename},${selectedState},${selectedCity},${selectedArea}`;
 }
 
+document.getElementById("modal_close").addEventListener("click", (e) => {
+	document.getElementById("mainviewbox").classList.add("d-none");
+});
+
 function renderList(data = null) {
 	let output = "";
 	if (data.length == 0) {
@@ -86,10 +90,10 @@ function renderList(data = null) {
 	}
 	let i = 0;
 	data.forEach((e) => {
-		output += `<div id="${`box-${i}`}" class="w-100 px-1 py-2 fs-6 fs-md-5 text-bg-light rounded d-flex justify-content-around my-2">
-				<div>${e.name}</div>
-				<div>${e.service_name}</div>
-				<div>${e.phonenumber}</div>
+		output += `<div id="${`box-${i}`}" class="clickable w-100 px-1 py-2 fs-6 fs-md-5 text-bg-light d-flex justify-content-around my-2">
+				<div class="name_some clickable" data-index="${i}">${e.name}</div>
+				<div class="name_some clickable" data-index="${i}">${e.service_name}</div>
+				<div class="name_some clickable" data-index="${i}">${e.phonenumber}</div>
 			</div>`;
 		i++;
 	});
@@ -98,13 +102,42 @@ function renderList(data = null) {
 	for (; i >= 0; i--) {
 		document.getElementById(`box-${i}`).addEventListener("click", box_click);
 	}
+	document.querySelectorAll(".name_some").forEach((e) => {
+		e.addEventListener("click", box_click2);
+	});
 }
 
-document.getElementById("modal_close").addEventListener("click", (e) => {
-	document.getElementById("mainviewbox").classList.add("d-none");
-});
+function box_click2(e) {
+	e.stopPropagation();
+	let i = +e.target.dataset.index;
+	let current_data = database[i];
+	document.getElementById("mainviewbox").classList.remove("d-none");
+	document.getElementById(
+		"viewbox"
+	).innerHTML = `<h5 class="card-title">User Information</h5>
+				<dl class="row">
+					<dt class="col-sm-3">Name</dt>
+					<dd class="col-sm-9">${current_data.name}</dd>
+
+					<dt class="col-sm-3">Service Name</dt>
+					<dd class="col-sm-9">${current_data.service_name}</dd>
+
+					<dt class="col-sm-3">City</dt>
+					<dd class="col-sm-9">${current_data.city}</dd>
+
+					<dt class="col-sm-3">State</dt>
+					<dd class="col-sm-9">${current_data.state}</dd>
+
+					<dt class="col-sm-3">Description</dt>
+					<dd class="col-sm-9">${current_data.description}</dd>
+
+					<dt class="col-sm-3">Phone Number</dt>
+					<dd class="col-sm-9">${current_data.phonenumber}</dd>
+				</dl>`;
+}
 
 function box_click(e) {
+	e.stopPropagation();
 	document.getElementById("mainviewbox").classList.remove("d-none");
 	let target = e.target.id;
 	let i = target.charAt(target.length - 1);
@@ -135,7 +168,6 @@ function box_click(e) {
 					<dt class="col-sm-3">Phone Number</dt>
 					<dd class="col-sm-9">${current_data.phonenumber}</dd>
 				</dl>`;
-	console.log(current_data);
 }
 
 function check(e = null) {
