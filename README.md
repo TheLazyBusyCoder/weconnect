@@ -1,2 +1,0 @@
-# weconnect
-my college project
