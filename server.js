@@ -40,7 +40,12 @@ app.get("/signup_provider", (req, res) => {
 
 app.post("/check_username_existence", (req, res) => {
     const { username, type } = req.body;
-    const sql = "SELECT * FROM user_provider WHERE username = ?";
+    let sql;
+    if (type == "finder") {
+        sql = "SELECT * FROM user_finder WHERE username = ?";
+    } else {
+        sql = "SELECT * FROM user_provider WHERE username = ?";
+    }
     pool.query(sql, [username, type], (error, results) => {
         if (error) {
             console.error("Error executing query:", error);
@@ -53,13 +58,44 @@ app.post("/check_username_existence", (req, res) => {
     });
 });
 
-app.get("/signup_provider_submit", (req, res) => {
-    const { username, name, password, service_name, description, state, city, area, phonenumber } = body.req;
-    res.end(`${username} ${description} ${state} ${city} ${area}`);
+app.post("/signup_provider_submit", (req, res) => {
+    const { username, name, password, service_name, description, state, city, area, phonenumber } = req.body;
+    const sql =
+        "INSERT INTO user_provider (username, name, password, service_name, description, state, city, area, phonenumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const values = [username, name, password, service_name, description, state, city, area, phonenumber];
+    pool.query(sql, values, (error, results) => {
+        if (error) {
+            console.error("Error inserting data into user_provider table:", error);
+            res.redirect("/error");
+        } else {
+            res.redirect("/success");
+        }
+    });
+});
+
+app.post("/signup_finder_submit", (req, res) => {
+    const { username, name, password } = req.body;
+    const sql = "INSERT INTO user_finder (username, name, password) VALUES (?, ?, ?)";
+    const values = [username, name, password];
+    pool.query(sql, values, (error, results) => {
+        if (error) {
+            console.error("Error inserting data into user_finder table:", error);
+            res.redirect("/error");
+        } else {
+            res.redirect("/success");
+        }
+    });
+});
+
+app.get("/success", (req, res) => {
+    res.render("pages/success");
+});
+app.get("/error", (req, res) => {
+    res.render("pages/error");
 });
 
 app.get("/signup_finder", (req, res) => {
-    res.render("pages/choose");
+    res.render("pages/signup_finder");
 });
 
 app.listen(PORT, () => {
