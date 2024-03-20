@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/mystyles.css" />
+    </head>
+    <body class="bg-light text-dark">
+        <%- include('../components/navbar.ejs'); %>
+        <div class="container mt-5 loadthis">
+            <div class="row mt-5">
+                <div class="col-10 mt-5 col-lg-6 mx-auto boxtypeone p-3">
+                    <form action="/checklogin" method="post">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input purple-checkbox rounded-0"
+                                type="radio"
+                                name="type"
+                                value="finder"
+                                id="finder"
+                            />
+                            <label class="form-check-label" for="finder"> Finder </label>
+                        </div>
+
+                        <div class="form-check form-check-inline mb-3">
+                            <input
+                                class="form-check-input purple-checkbox rounded-0"
+                                type="radio"
+                                name="type"
+                                value="provider"
+                                id="provider"
+                                checked
+                            />
+                            <label class="form-check-label" for="provider"> Provider </label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="username_input" class="form-label fw-semibold fs-5">[USERNAME]</label>
+                            <input
+                                required
+                                autocomplete="true"
+                                type="text"
+                                class="form-control meranav fs-5 fw-semibold rounded-0"
+                                id="username_input"
+                                name="username"
+                                aria-describedby="emailHelp"
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label fw-semibold fs-5">[PASSWORD]</label>
+                            <input
+                                required
+                                name="password"
+                                type="password"
+                                class="meranav form-control fs-5 fw-semibold text-one rounded-0"
+                                id="password"
+                            />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary fw-semibold boxtypezero btn-lg">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="/js/bootstrap.min.js"></script>
+        <script>
+            document.getElementById("login").classList.add("active");
+        </script>
+        <script>
+            window.addEventListener("load", function () {
+                let list = document.querySelectorAll(".loadthis");
+                for (let i = 0; i < list.length; i++) {
+                    list[i].classList.add("loaded");
+                }
+            });
+        </script>
+    </body>
+</html>

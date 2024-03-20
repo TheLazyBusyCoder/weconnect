@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Signup</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/mystyles.css" />
+    </head>
+    <body class="">
+        <!-- navbar -->
+        <%- include('../components/navbar.ejs'); %>
+        <div class="container mt-0 mt-md-5 h-100">
+            <div class="row mt-0 mt-md-5">
+                <div class="col-lg-8 mx-auto boxtypeone p-3 px-5">
+                    <form action="/signup_provider_submit" method="post">
+                        <div class="">
+                            <label for="username_input" class="form-label fs-4 fw-semibold text-light"
+                                >[USERNAME]</label
+                            >
+
+                            <label id="username_message" class="form-text text-light"></label>
+
+                            <input
+                                autocomplete="true"
+                                required
+                                type="text"
+                                class="form-control rounded-0 meranav fw-bold"
+                                id="username_input"
+                                name="username"
+                                aria-describedby="emailHelp"
+                            />
+
+                            <div id="emailHelp" class="form-text text-light">(Use only alphebets, numbers)</div>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="form-label fs-4 fw-semibold text-light">[NAME]</label>
+
+                            <input
+                                autocomplete="true"
+                                type="text"
+                                required
+                                name="name"
+                                class="form-control rounded-0 fw-bold meranav"
+                            />
+                            <div class="form-text text-light">(Your full name)</div>
+                        </div>
+
+                        <div class="mt-2">
+                            <label for="password_input" class="form-label fs-4 fw-semibold text-light"
+                                >[PASSWORD]</label
+                            >
+
+                            <input
+                                required
+                                name="password"
+                                type="password"
+                                class="form-control rounded-0 meranav fw-bold"
+                                id="password_input"
+                            />
+
+                            <div
+                                class="progress mt-2 rounded-0"
+                                role="progressbar"
+                                aria-label="Basic example"
+                                aria-valuenow="100"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                style="height: 10px"
+                            >
+                                <div id="bar" class="bg-success progress-bar rounded-0"></div>
+                            </div>
+
+                            <div id="emailHelp" class="form-text text-light">
+                                (Your password must be 8-20 characters long)
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="mt-2">
+                            <label class="form-label fs-4 fw-semibold text-light">[SERVICE]</label>
+
+                            <input
+                                autocomplete="true"
+                                type="text"
+                                required
+                                name="service_name"
+                                class="form-control fw-bold rounded-0 meranav"
+                            />
+                            <div class="form-text text-light">(Name of the service you are providing)</div>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="form-label fs-4 fw-semibold text-light">[DESCRIPTION]</label>
+
+                            <input
+                                type="text"
+                                required
+                                name="description"
+                                class="form-control fw-bold rounded-0 meranav"
+                            />
+                            <div class="form-text text-light">(Description of the service you are providing)</div>
+                        </div>
+
+                        <hr />
+
+                        <div class="mt-2">
+                            <label class="form-label fs-4 fw-semibold text-light">[STATE]</label>
+
+                            <div class="form-group">
+                                <select
+                                    required
+                                    name="state"
+                                    class="form-select fw-bold rounded-0 meranav"
+                                    aria-label="Default select example"
+                                    id="stateInput"
+                                >
+                                    <option value="none" selected>Open this select menu</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="form-label fs-4 fw-semibold text-light">[CITY]</label>
+
+                            <div class="form-group">
+                                <select
+                                    disabled
+                                    required
+                                    name="city"
+                                    class="form-select fw-bold rounded-0 meranav"
+                                    aria-label="Default select example"
+                                    id="cityInput"
+                                ></select>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="form-label fs-4 fw-semibold text-light">[AREA]</label>
+
+                            <div class="form-group">
+                                <select
+                                    disabled
+                                    required
+                                    name="area"
+                                    class="form-select fw-bold rounded-0 meranav"
+                                    aria-label="Default select example"
+                                    id="areaInput"
+                                ></select>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="mt-3">
+                            <label class="form-label fs-4 fw-semibold text-light">[CONTACT]</label>
+
+                            <input
+                                type="number"
+                                name="phonenumber"
+                                class="form-control fw-bold rounded-0 meranav"
+                                pattern="\d*"
+                                maxlength="10"
+                                placeholder="Enter Indian Phone Number (up to 10 digits)"
+                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                required
+                            />
+                            <div class="form-text text-light">(Your Phone number)</div>
+                        </div>
+
+                        <button
+                            disabled
+                            id="submit_button"
+                            type="submit"
+                            class="mt-3 btn fw-semibold boxtypezero btn-lg"
+                        >
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="/js/bootstrap.min.js"></script>
+        <!-- username password -->
+        <script>
+            document.getElementById("signup").classList.add("active");
+            const input = document.getElementById("username_input");
+            const messageElement = document.getElementById("username_message");
+            const button = document.getElementById("submit_button");
+            let flag = false;
+            let type = "provider";
+
+            function check(e = null) {
+                let username = "";
+                if (e == null) {
+                    username = input.innerText;
+                } else {
+                    username = e.target.value;
+                }
+                if (username.length == 0) {
+                    messageElement.classList.remove("text-light");
+
+                    messageElement.classList.remove("green");
+                    messageElement.classList.add("error");
+                    messageElement.textContent = "Username should not be empty";
+                    button.disabled = true;
+                } else {
+                    if (!/^[a-zA-Z0-9]+$/.test(username)) {
+                        messageElement.classList.remove("green");
+                        messageElement.classList.remove("text-light");
+                        messageElement.classList.add("error");
+                        messageElement.textContent = "Username should have only alphebets and numbers";
+                        button.disabled = false;
+                        return;
+                    }
+                    fetch("/check_username_existence", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: "username=" + encodeURIComponent(username) + "&type=" + encodeURIComponent(type),
+                    })
+                        .then((response) => response.json())
+                        .then((result) => {
+                            if (result.is_exist) {
+                                messageElement.textContent = "Username already exists!";
+                                messageElement.classList.remove("green");
+                                messageElement.classList.add("error");
+                                button.disabled = true;
+                            } else {
+                                messageElement.textContent = "Username is valid!";
+                                messageElement.classList.remove("error");
+                                messageElement.classList.add("green");
+                                button.disabled = false;
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Error:", error);
+                        });
+                }
+            }
+            check();
+            input.addEventListener("input", check);
+
+            const bar = document.getElementById("bar");
+            const password = document.getElementById("password_input");
+            password.addEventListener("input", (e) => {
+                let width;
+                if (e.target.value.length < 8) {
+                    width = ((e.target.value.length - 0) / (8 - 0)) * 100;
+                    bar.classList.remove("bg-success");
+                    bar.classList.add("bg-danger");
+                    button.disabled = true;
+                } else {
+                    width = 100;
+                    bar.classList.add("bg-success");
+                    bar.classList.remove("bg-danger");
+                    button.disabled = false;
+                }
+                bar.style.width = `${width}%`;
+            });
+        </script>
+        <!-- location -->
+        <script>
+            const states = ["maharashtra"];
+
+            const pune = [
+                "mumbai",
+                "pune",
+                "nagpur",
+                "nashik",
+                "thane",
+                "aurangabad",
+                "solapur",
+                "amravati",
+                "kolhapur",
+                "navi mumbai",
+            ];
+
+            const pune_areas = [
+                "ambegaon budruk",
+                "aundh",
+                "baner",
+                "bavdhan khurd",
+                "bavdhan budruk",
+                "balewadi",
+                "shivajinagar",
+                "bibvewadi",
+                "bhugaon",
+                "bhukum",
+                "dhankawadi",
+                "dhanori",
+                "dhayari",
+                "erandwane",
+                "fursungi",
+                "ghorpadi",
+                "hadapsar",
+                "hingne khurd",
+                "karve nagar",
+                "kalas",
+                "katraj",
+                "khadki",
+                "kharadi",
+                "kondhwa",
+                "koregaon park",
+                "kothrud",
+                "lohagaon",
+                "manjri",
+                "markal",
+                "mohammed wadi",
+                "mundhwa",
+                "nanded",
+                "parvati (parvati hill)",
+                "panmala",
+                "pashan",
+                "pirangut",
+                "shivane",
+                "sus",
+                "undri",
+                "vishrantwadi",
+                "vitthalwadi",
+                "vadgaon khurd",
+                "vadgaon budruk",
+                "vadgaon sheri",
+                "wagholi",
+                "wanwadi",
+                "warje",
+                "yerwada",
+            ];
+
+            states.forEach((e) => {
+                let option = document.createElement("option");
+                option.innerText = e;
+                option.setAttribute("value", e);
+                document.getElementById("stateInput").appendChild(option);
+            });
+
+            function updateCities() {
+                let selectElement = document.getElementById("cityInput");
+                while (selectElement.firstChild) {
+                    selectElement.removeChild(selectElement.firstChild);
+                }
+                if (document.getElementById("stateInput").value == "maharashtra") {
+                    pune.forEach((e) => {
+                        let option = document.createElement("option");
+                        option.innerText = e;
+                        option.setAttribute("value", e);
+                        document.getElementById("cityInput").appendChild(option);
+                    });
+                }
+            }
+
+            function updateArea() {
+                let selectElement = document.getElementById("areaInput");
+                while (selectElement.firstChild) {
+                    selectElement.removeChild(selectElement.firstChild);
+                }
+                if (document.getElementById("cityInput").value == "pune") {
+                    pune_areas.forEach((e) => {
+                        let option = document.createElement("option");
+                        option.innerText = e;
+                        option.setAttribute("value", e);
+                        document.getElementById("areaInput").appendChild(option);
+                    });
+                }
+            }
+
+            document.getElementById("stateInput").addEventListener("change", function () {
+                updateCities();
+                document.getElementById("cityInput").disabled = false;
+            });
+
+            document.getElementById("cityInput").addEventListener("change", function () {
+                updateArea();
+                document.getElementById("cityInput").disabled = false;
+                document.getElementById("areaInput").disabled = false;
+            });
+            document.getElementById("areaInput").addEventListener("change", function () {
+                document.getElementById("areaInput").disabled = false;
+            });
+        </script>
+        <script>
+            document.getElementById("signup").innerText = "Signup - Provider";
+        </script>
+        <script>
+            window.addEventListener("load", function () {
+                let list = document.querySelectorAll(".loadthis");
+                for (let i = 0; i < list.length; i++) {
+                    list[i].classList.add("loaded");
+                }
+            });
+        </script>
+    </body>
+</html>

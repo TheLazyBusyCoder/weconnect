@@ -1,0 +1,213 @@
+:root {
+    --one: #db6e3b;
+    --six: #c66436f6;
+    --two: #81d69c;
+    --three: #5b38a6;
+    --four: #290773;
+    --five: rgb(241, 241, 241);
+}
+
+.green {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+.one {
+    color: var(--one);
+}
+
+.purple-checkbox {
+    width: 20px;
+    height: 20px;
+    background-color: var(--one);
+    border: 1px solid white;
+    border-radius: 0px;
+}
+
+.purple-checkbox:checked {
+    width: 20px;
+    height: 20px;
+    background-color: var(--one);
+    border: 1px solid white;
+}
+
+@keyframes typing {
+    0%,
+    100% {
+        width: 0;
+        color: var(--one);
+    }
+    50% {
+        width: 100%;
+        color: var(--three);
+    }
+}
+
+.typing-text {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 8s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}
+
+.loadthis {
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.loaded {
+    opacity: 1;
+}
+
+.transperent {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.noborder:focus {
+    box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+.boxtypezero1 {
+    background-color: var(--one);
+    color: var(--five);
+    box-shadow: 10px 15px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+.boxtypezero1:hover {
+    background-color: var(--six);
+    color: var(--five);
+}
+
+.boxtypezero {
+    background-color: var(--one);
+    color: var(--five);
+    box-shadow: 10px 15px 10px -5px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+}
+
+.boxtypezero:disabled {
+    background-color: var(--one);
+    color: var(--five);
+    box-shadow: 10px 15px 10px -5px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+}
+
+.boxtypezero:hover {
+    transform: translate(-5px, -5px);
+    background-color: var(--one);
+}
+
+.boxtypezero:hover {
+    transform: translate(-5px, -5px);
+}
+
+.boxtypeone {
+    background-color: var(--three);
+    color: var(--five);
+    box-shadow: 10px 15px 10px -5px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+    border: 1px solid white;
+}
+
+.border_left_right:hover {
+    border-right: 5px solid var(--three);
+}
+
+.boxtypetwo:hover {
+    transform: translate(-5px, -5px);
+}
+
+.boxtypeone:hover {
+    transform: translate(-5px, -5px);
+}
+
+.boxtypetwo {
+    background-color: var(--one);
+    color: var(--five);
+    box-shadow: 10px 15px 10px -5px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+    border: 1px solid white;
+}
+
+.meranav {
+    box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+.bg-light {
+    background-color: var(--five);
+}
+
+.heading {
+    transition: all 0.5s ease;
+}
+
+.heading:hover {
+    color: var(--one);
+    padding-left: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.text-one {
+    color: var(--three);
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--one) !important;
+}
+
+.some:hover {
+    color: rgb(255, 213, 0);
+}
+
+.green {
+    color: rgb(0, 255, 0);
+}
+
+.footer {
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+}
+
+.animated-text {
+    animation: faidIn 1.5s ease 0s 1;
+}
+
+@keyframes faidIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Search page */
+
+.resultbox::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+.resultbox::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Color of the thumb */
+}
+
+.resultbox::-webkit-scrollbar-track {
+    background-color: transparent; /* Color of the track */
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.result_box {
+    height: 65vh;
+}
+
+@media (width < 500px) {
+    .result_box {
+        height: 40vh;
+    }
+}
