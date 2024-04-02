@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Search Page</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/mystyles.css" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+    </head>
+    <body class="" style="position: relative">
+        <%- include('../components/logoutnav.ejs'); %> <%- include('../components/viewbox.ejs'); %> <%-
+        include('../components/searchform.ejs'); %> <%- include('../components/result.ejs'); %>
+
+        <script src="/some.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script>
+            window.addEventListener("load", function () {
+                let list = document.querySelectorAll(".loadthis");
+                for (let i = 0; i < list.length; i++) {
+                    list[i].classList.add("loaded");
+                }
+            });
+        </script>
+    </body>
+</html>

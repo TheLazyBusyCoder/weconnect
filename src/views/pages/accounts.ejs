@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title><%= username %></title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/mystyles.css" />
+        <script>
+            window.addEventListener("load", function () {
+                document.body.classList.add("loaded");
+            });
+        </script>
+    </head>
+    <body class="">
+        <div class="container-fluid my-sm-5">
+            <div class="row py-3">
+                <div class="col-md-8 mx-auto">
+                    <h1 class="heading fs-1 text d-flex justify-content-around align-items-center p-2">
+                        User Information
+                        <form action="/logout" method="post">
+                            <button type="submit" class="btn bg-light text-dark boxtypezero">logout</button>
+                        </form>
+                    </h1>
+                    <hr />
+                    <form action="/update" method="post">
+                        <div class="mb-3">
+                            <label class="form-label fs-5">Username</label>
+                            <label class="form-control bg-light" id="username"> <%= username %> </label>
+                        </div>
+
+                        <input name="username" type="hidden" value="<%= username %>" />
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label fs-5">Name</label>
+                            <input
+                                type="text"
+                                class="form-control bg-light"
+                                name="name"
+                                id="name"
+                                required
+                                readonly
+                                value="<%= name %>"
+                            />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label fs-5">Description</label>
+                            <textarea
+                                name="description"
+                                class="form-control bg-light"
+                                id="description"
+                                rows="3"
+                                readonly
+                                required
+                            >
+<%= description %></textarea
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="service_name" class="form-label fs-5">Service Name</label>
+                            <input
+                                type="text"
+                                class="form-control bg-light"
+                                name="service_name"
+                                required
+                                id="serviceName"
+                                readonly
+                                value="<%= service_name %>"
+                            />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fs-5">Service Location</label>
+                            <table class="table table-light">
+                                <tbody class="bg-light">
+                                    <tr>
+                                        <th scope="col">Area</th>
+                                        <td class="bg-light">
+                                            <label class="" id="area"> <%= area %> </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">City</th>
+                                        <td>
+                                            <label class="" id="area"> <%= city %> </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">State</th>
+                                        <td>
+                                            <label class="" id="area"> <%= state %> </label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fs-5">Phone</label>
+                            <input
+                                type="tel"
+                                class="form-control bg-light"
+                                id="phone"
+                                name="phonenumber"
+                                readonly
+                                required
+                                value="<%= phonenumber %>"
+                            />
+                        </div>
+
+                        <div class="d-flex justify-content-around">
+                            <button id="edit" type="submit" class="btn btn-primary">Edit</button>
+
+                            <button id="submit" disabled type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/myjs.js"></script>
+        <script>
+            if (window.location.search.includes("updated=1")) {
+                alert("Account updated successfully!");
+            }
+        </script>
+    </body>
+</html>

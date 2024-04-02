@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/mystyles.css" />
+        <script>
+            window.addEventListener("load", function () {
+                document.body.classList.add("loaded");
+            });
+        </script>
+    </head>
+    <body class="">
+        <%- include('../components/navbar.ejs'); %>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card text-center rounded-0 boxtypeone">
+                        <div class="card-body">
+                            <h5 class="card-title">Error Occured :(</h5>
+                            <p class="card-text"><p><%= errorMessage %></p></p>
+                            <a href="<%= route %>" class="btn fw-semibold boxtypezero"><%= text %></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/bootstrap.min.js"></script>
+    </body>
+</html>
