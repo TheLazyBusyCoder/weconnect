@@ -6,6 +6,7 @@
         <title><%= username %></title>
         <link rel="stylesheet" href="/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/mystyles.css" />
+        <%- include('../components/favicon.ejs'); %>
         <script>
             window.addEventListener("load", function () {
                 document.body.classList.add("loaded");
@@ -15,18 +16,18 @@
     <body class="">
         <div class="container-fluid my-sm-5">
             <div class="row py-3">
-                <div class="col-md-8 mx-auto">
-                    <h1 class="heading fs-1 text d-flex justify-content-around align-items-center p-2">
+                <div class="col-md-8 mx-auto boxtypeone">
+                    <h1 class="text-white fs-1 text d-flex justify-content-around align-items-center p-2">
                         User Information
-                        <form action="/logout" method="post">
-                            <button type="submit" class="btn bg-light text-dark boxtypezero">logout</button>
+                        <form action="/auth/logout" method="post">
+                            <button type="submit" class="btn bg-light text-dark boxtypezero">Logout</button>
                         </form>
                     </h1>
                     <hr />
-                    <form action="/update" method="post">
+                    <form action="/user/update" method="post">
                         <div class="mb-3">
                             <label class="form-label fs-5">Username</label>
-                            <label class="form-control bg-light" id="username"> <%= username %> </label>
+                            <label class="form-control bg-light rounded-0" id="username"> <%= username %> </label>
                         </div>
 
                         <input name="username" type="hidden" value="<%= username %>" />
@@ -35,7 +36,7 @@
                             <label for="name" class="form-label fs-5">Name</label>
                             <input
                                 type="text"
-                                class="form-control bg-light"
+                                class="form-control bg-light rounded-0"
                                 name="name"
                                 id="name"
                                 required
@@ -48,7 +49,7 @@
                             <label for="description" class="form-label fs-5">Description</label>
                             <textarea
                                 name="description"
-                                class="form-control bg-light"
+                                class="form-control bg-light rounded-0"
                                 id="description"
                                 rows="3"
                                 readonly
@@ -62,7 +63,7 @@
                             <label for="service_name" class="form-label fs-5">Service Name</label>
                             <input
                                 type="text"
-                                class="form-control bg-light"
+                                class="form-control bg-light rounded-0"
                                 name="service_name"
                                 required
                                 id="serviceName"
@@ -101,7 +102,7 @@
                             <label class="form-label fs-5">Phone</label>
                             <input
                                 type="tel"
-                                class="form-control bg-light"
+                                class="form-control bg-light rounded-0"
                                 id="phone"
                                 name="phonenumber"
                                 readonly
@@ -110,10 +111,10 @@
                             />
                         </div>
 
-                        <div class="d-flex justify-content-around">
-                            <button id="edit" type="submit" class="btn btn-primary">Edit</button>
+                        <div class="d-flex justify-content-around pb-3">
+                            <button id="edit" type="submit" class="btn btn-primary rounded-0">Edit</button>
 
-                            <button id="submit" disabled type="submit" class="btn btn-primary">Submit</button>
+                            <button id="submit" disabled type="submit" class="btn btn-primary rounded-0">Submit</button>
                         </div>
                     </form>
                 </div>
