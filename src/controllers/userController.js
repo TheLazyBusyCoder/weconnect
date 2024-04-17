@@ -57,7 +57,6 @@ router.post("/getcity", (req, res) => {
             res.status(500).json({ error: "An error occurred while fetching data" });
             return;
         }
-
         console.log("Fetched data:", results);
         res.json({ data: results });
     });

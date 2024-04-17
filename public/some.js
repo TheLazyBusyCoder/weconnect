@@ -16,7 +16,7 @@ const pune = [
 let pune_areas;
 
 function getcityareas(city) {
-    fetch("/getcity", {
+    fetch("/user/getcity", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -161,7 +161,7 @@ function check(e = null) {
     }
     if (servicename.length == 0) {
     } else if (servicename.length > 3) {
-        fetch("/getdatabyservice", {
+        fetch("/user/getdatabyservice", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",

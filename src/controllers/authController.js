@@ -74,9 +74,9 @@ router.post("/signup_provider_submit", (req, res) => {
     pool.query(sql, values, (error, results) => {
         if (error) {
             console.error("Error inserting data into user_provider table:", error);
-            res.redirect("/error");
+            res.redirect("/auth/error");
         } else {
-            res.redirect("/success");
+            res.redirect("/auth/success");
         }
     });
 });
@@ -94,9 +94,9 @@ router.post("/signup_finder_submit", (req, res) => {
     pool.query(sql, values, (error, results) => {
         if (error) {
             console.error("Error inserting data into user_finder table:", error);
-            res.redirect("/error");
+            res.redirect("/auth/error");
         } else {
-            res.redirect("/success");
+            res.redirect("/auth/success");
         }
     });
 });

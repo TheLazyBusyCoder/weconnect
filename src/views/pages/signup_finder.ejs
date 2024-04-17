@@ -34,7 +34,7 @@
         <div class="container mt-2 loadthis">
             <div class="row mt-0 mt-md-5">
                 <div class="col-lg-8 mx-auto boxtypeone p-3 px-5">
-                    <form action="/signup_finder_submit" method="post">
+                    <form action="/auth/signup_finder_submit" method="post">
                         <div class="mt-2">
                             <label id="username_message" class="form-label">Username</label>
                             <label for="username_input" class="form-text mb-2"></label>
@@ -126,7 +126,7 @@
                         button.disabled = false;
                         return;
                     }
-                    fetch("/check_username_existence", {
+                    fetch("/auth/check_username_existence", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/x-www-form-urlencoded",
