@@ -1,17 +1,6 @@
 const states = ["maharashtra"];
 
-const pune = [
-    "mumbai",
-    "pune",
-    "nagpur",
-    "nashik",
-    "thane",
-    "aurangabad",
-    "solapur",
-    "amravati",
-    "kolhapur",
-    "navi mumbai",
-];
+const pune = ["mumbai", "pune"];
 
 let pune_areas;
 

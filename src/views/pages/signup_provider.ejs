@@ -267,18 +267,7 @@
         <script>
             const states = ["maharashtra"];
 
-            const pune = [
-                "mumbai",
-                "pune",
-                "nagpur",
-                "nashik",
-                "thane",
-                "aurangabad",
-                "solapur",
-                "amravati",
-                "kolhapur",
-                "navi mumbai",
-            ];
+            const city = ["mumbai", "pune"];
 
             const pune_areas = [
                 "ambegaon budruk",
@@ -331,6 +320,31 @@
                 "yerwada",
             ];
 
+            const mumbai_areas = [
+                "Andheri",
+                "Bandra",
+                "Borivali",
+                "Chembur",
+                "Colaba",
+                "Dadar",
+                "Dharavi",
+                "Goregaon",
+                "Juhu",
+                "Kandivali",
+                "Kurla",
+                "Malad",
+                "Matunga",
+                "Mulund",
+                "Parel",
+                "Powai",
+                "Santacruz",
+                "Sion",
+                "Vashi",
+                "Versova",
+                "Vile Parle",
+                "Worli",
+            ];
+
             states.forEach((e) => {
                 let option = document.createElement("option");
                 option.innerText = e;
@@ -344,7 +358,7 @@
                     selectElement.removeChild(selectElement.firstChild);
                 }
                 if (document.getElementById("stateInput").value == "maharashtra") {
-                    pune.forEach((e) => {
+                    city.forEach((e) => {
                         let option = document.createElement("option");
                         option.innerText = e;
                         option.setAttribute("value", e);
@@ -360,6 +374,13 @@
                 }
                 if (document.getElementById("cityInput").value == "pune") {
                     pune_areas.forEach((e) => {
+                        let option = document.createElement("option");
+                        option.innerText = e;
+                        option.setAttribute("value", e);
+                        document.getElementById("areaInput").appendChild(option);
+                    });
+                } else if (document.getElementById("cityInput").value == "mumbai") {
+                    mumbai_areas.forEach((e) => {
                         let option = document.createElement("option");
                         option.innerText = e;
                         option.setAttribute("value", e);
