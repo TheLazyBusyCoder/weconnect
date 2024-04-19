@@ -68,6 +68,15 @@ router.get("/signup_provider", (req, res) => {
 
 router.post("/signup_provider_submit", (req, res) => {
     const { username, name, password, service_name, description, state, city, area, phonenumber } = req.body;
+    const out = /^[a-zA-Z]+$/.test(name);
+    const out1 = /^[a-zA-Z]+$/.test(service_name);
+    if (phonenumber.length != 10) {
+        return res.redirect("/auth/signup_provider?problem=contact");
+    } else if (!out) {
+        return res.redirect("/auth/signup_provider?problem=name");
+    } else if (!out1) {
+        return res.redirect("/auth/signup_provider?problem=service");
+    }
     const sql =
         "INSERT INTO user_provider (username, name, password, service_name, description, state, city, area, phonenumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const values = [username, name, password, service_name, description, state, city, area, phonenumber];
@@ -114,7 +123,7 @@ router.get("/success", (req, res) => {
 
 router.get("/error", (req, res) => {
     const errorMessage = "Oops! Something went wrong.";
-    res.render("pages/error", { errorMessage: errorMessage });
+    res.render("pages/error", { errorMessage: errorMessage, route: "/home", text: "Home" });
 });
 
 module.exports = router;

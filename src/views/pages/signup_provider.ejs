@@ -393,5 +393,17 @@
                 }
             });
         </script>
+        <script>
+            var url = window.location.href;
+            var params = new URLSearchParams(url.split("?")[1]);
+            var problem = params.get("problem");
+            if (problem == "contact") {
+                alert("Invalid contact number");
+            } else if (problem == "name") {
+                alert("Name should only contains alphebets");
+            } else if (problem == "service") {
+                alert("Service should only contains alphebets");
+            }
+        </script>
     </body>
 </html>
