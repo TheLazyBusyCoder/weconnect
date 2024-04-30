@@ -69,7 +69,7 @@ router.get("/signup_provider", (req, res) => {
 router.post("/signup_provider_submit", (req, res) => {
     const { username, name, password, service_name, description, state, city, area, phonenumber } = req.body;
     const out = /^[a-zA-Z]+$/.test(name);
-    const out1 = /^[a-zA-Z]+$/.test(service_name);
+    const out1 = /^[a-zA-Z\s]+$/.test(service_name);
     if (phonenumber.length != 10) {
         return res.redirect("/auth/signup_provider?problem=contact");
     } else if (!out) {
